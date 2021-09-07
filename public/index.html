@@ -1,3 +1,10 @@
+<!-- 
+public directory lives outside the react module system
+this means that webpack will not see and bundle the code into production code
+only index.html lives here, and files related to editing of index.html
+such as favicon, app title 
+things outside of react
+-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,6 +31,9 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
     <title>React App</title>
   </head>
   <body>

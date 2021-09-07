@@ -1,8 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+// Entry point of the javascript
+// all react code goes within src, which includes js/css/assets files
+// webpack sees everything in src
 
 ReactDOM.render(
   <React.StrictMode>
