@@ -7,9 +7,10 @@ import heartIcon from './../../assets/heart.png';
 // this is what is known as a presentation component
 // props get passed down, thats it
 // functions to update back in the container/parent
-function Tweet({ data }) {
+function Tweet({ data, onIncrementLikes, onIncrementRetweets }) {
 
     const {
+        id,
         name,
         profile,
         handle,
@@ -17,12 +18,17 @@ function Tweet({ data }) {
         tweet,
         tweetImage,
         likes,
+        liked,
         retweets,
     } = data;
 
-    const incrementLikes = () => {
+    const likeClicked = (event) => {
+        onIncrementLikes(id);
+    };
 
-    }
+    const retweetClicked = (event) => {
+        onIncrementRetweets(id);
+    };
 
     return (
         <div className={`card ${styles.tcard}`}>
@@ -46,10 +52,10 @@ function Tweet({ data }) {
                         <img className={styles["tweet-image"]} src={tweetImage} alt="" />
                     </div>
                     <div>
-                        <img onClick={incrementLikes} className={styles["heart-icon"]} src={heartIcon} alt="" />
+                        <img onClick={likeClicked} className={ (liked) ? styles["heart-icon-liked"]: styles["heart-icon"] } src={heartIcon} alt="" />
                         <small className={styles["like-text"]}>{likes}</small>
 
-                        <i className={`fa fa-retweet ${styles.retweet}`}></i>
+                        <i onClick={retweetClicked} className={`fa fa-retweet ${styles.retweet}`}></i>
                         <small className={styles["like-text"]}>{retweets}</small>
                     </div>
 
