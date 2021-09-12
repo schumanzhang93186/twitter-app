@@ -1,4 +1,4 @@
-.card {
+.tcard {
     color: #000000;
     margin: 20px;
     text-align: left;
@@ -6,16 +6,18 @@
     padding-bottom: 10px;
 }
 
-small {
+.small-text {
     font-size: 0.5em;
 }
 
 .handle-text {
+    font-size: 0.5em;
     margin-left: 10px;
     color: #bdc3c7;
 }
 
 .date-text {
+    font-size: 0.5em;
     margin-left: 10px;
     color: #7f8c8d;
 }
@@ -45,6 +47,10 @@ small {
     border-radius: 5%;
 }
 
+.heart-icon {
+    cursor: pointer;
+}
+
 .heart-icon:hover {
     background: #f8a5c2;
 }
@@ -52,7 +58,13 @@ small {
 .like-text {
     margin-left: 8px;
     color: #bdc3c7;
+    font-size: 0.5em;
+}
 
+.retweet {
+    font-size: 1rem;
+    margin-left: 20px;
+    cursor: pointer;
 }
   
 
