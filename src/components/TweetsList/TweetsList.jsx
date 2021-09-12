@@ -8,11 +8,11 @@ class TweetsList extends React.Component {
     render() {
         const { children } = this.props;
         const { searchPlaceholder } = this.props;
+        const { onSubmitSearch } = this.props;
 
         return (
             <>
-                <Search placeholder={searchPlaceholder}/>
-
+                <Search placeholder={searchPlaceholder} onSubmitSearch={onSubmitSearch}/>
                 { children }
             </>
         );
