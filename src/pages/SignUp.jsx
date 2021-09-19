@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import SignUpForm from "../components/SignUpForm/SignUpForm";
 
 import Loading from './../components/Loading';
@@ -8,6 +9,7 @@ import Error from './../components/Error';
 // react hooks used for side effects
 
 export default function SignUp() {
+    const history = useHistory();
 
     const [ quote, setQuote ] = useState('');
     const [ loading, setLoading ] = useState(false);
@@ -62,6 +64,22 @@ export default function SignUp() {
 
     }, [quote]);
 
+    const onSignUp = (profile) => {
+        console.log("onSignUp", profile.email);
+        fetch('http://localhost:3001/users', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ profile }),
+        })
+        .then(res => res.json())
+        .then(res => {
+            history.push("/");
+        });
+    };
+
     return (
         <div className="App">
             <header className="App-header">
@@ -70,7 +88,7 @@ export default function SignUp() {
                     {!loading && error && <Error />}
                     {!loading && !error &&
                         <div className="col-md-4 offset-md-4">
-                            <SignUpForm quote={quote}/>
+                            <SignUpForm quote={quote} onSignUpSubmit={onSignUp}/>
                         </div>
                     }
                 </div>

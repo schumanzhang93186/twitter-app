@@ -37,7 +37,57 @@
       "retweets": 1000
     }
   ],
-  "snapshots": [],
+  "snapshots": [
+    {
+      "tweets": [],
+      "loading": true,
+      "error": false,
+      "id": 1
+    },
+    {
+      "tweets": [
+        {
+          "id": "001",
+          "name": "Jessica",
+          "profile": "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+          "handle": "i_am_jessica",
+          "date": "Aug 21, 2021",
+          "tweet": "I really like my cake this morning",
+          "tweetImage": "https://images.unsplash.com/photo-1486427944299-d1955d23e34d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+          "likes": 20,
+          "liked": false,
+          "retweets": 203
+        },
+        {
+          "id": "002",
+          "name": "Mark",
+          "profile": "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1055&q=80",
+          "handle": "mark_smith",
+          "date": "Aug 20, 2021",
+          "tweet": "One of my favourite cars of all time is a Ferrari, especially THIS red Ferrari, I would buy this right now if I had the $$",
+          "tweetImage": "https://images.unsplash.com/photo-1597687228894-111db66403b6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1241&q=80",
+          "likes": 202,
+          "liked": false,
+          "retweets": 303
+        },
+        {
+          "id": "003",
+          "name": "Mike",
+          "profile": "https://images.unsplash.com/photo-1583195764036-6dc248ac07d9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1055&q=80",
+          "handle": "mikey_now",
+          "date": "Aug 22, 2021",
+          "tweet": "Can't wait for the pandemic to be over so I can visit one of my favourite places in this world!",
+          "tweetImage": "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1022&q=80",
+          "likes": 19,
+          "liked": true,
+          "retweets": 1000
+        }
+      ],
+      "loading": false,
+      "error": false,
+      "id": 2
+    }
+  ],
   "quotes": [
     {
       "quote": "",
@@ -106,9 +156,222 @@
     {
       "quote": "Do the best you can until you know better. Then when you know better, do better.",
       "id": 17
+    },
+    {
+      "quote": "",
+      "id": 18
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 19
+    },
+    {
+      "quote": "",
+      "id": 20
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 21
+    },
+    {
+      "quote": "",
+      "id": 22
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 23
+    },
+    {
+      "quote": "",
+      "id": 24
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 25
+    },
+    {
+      "quote": "",
+      "id": 26
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 27
+    },
+    {
+      "quote": "",
+      "id": 28
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 29
+    },
+    {
+      "quote": "",
+      "id": 30
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 31
+    },
+    {
+      "quote": "",
+      "id": 32
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 33
+    },
+    {
+      "quote": "",
+      "id": 34
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 35
+    },
+    {
+      "quote": "",
+      "id": 36
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 37
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 38
+    },
+    {
+      "quote": "",
+      "id": 39
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 40
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 41
+    },
+    {
+      "quote": "",
+      "id": 42
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 43
+    },
+    {
+      "quote": "",
+      "id": 44
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 45
+    },
+    {
+      "quote": "",
+      "id": 46
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 47
+    },
+    {
+      "quote": "",
+      "id": 48
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 49
+    },
+    {
+      "quote": "",
+      "id": 50
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 51
+    },
+    {
+      "quote": "",
+      "id": 52
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 53
+    },
+    {
+      "quote": "",
+      "id": 54
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 55
+    },
+    {
+      "quote": "",
+      "id": 56
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 57
+    },
+    {
+      "quote": "",
+      "id": 58
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 59
+    },
+    {
+      "quote": "",
+      "id": 60
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 61
+    },
+    {
+      "quote": "",
+      "id": 62
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 63
+    },
+    {
+      "quote": "",
+      "id": 64
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 65
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 66
+    },
+    {
+      "quote": "",
+      "id": 67
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 68
+    },
+    {
+      "quote": "",
+      "id": 69
+    },
+    {
+      "quote": "Do the best you can until you know better. Then when you know better, do better.",
+      "id": 70
     }
   ],
   "profile": {
     "name": "Schuman"
-  }
+  },
+  "usesr": []
 }

@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.signup-input {
+  margin-top: 15px;
+}
+
+span.error {
+  font-size: 0.5em;
+  color: red;
+}
