@@ -5,30 +5,9 @@ import TweetsList from './../components/TweetsList/TweetsList';
 import Tweet from './../components/Tweet/Tweet';
 import Sort from './../components/Sort/Sort';
 
-
-function Empty() {
-    return (
-        <div>
-            <h1>Empty</h1>
-        </div>
-    )
-}
-
-function Loading() {
-    return (
-        <div>
-            <h1>Loading...</h1>
-        </div>
-    )
-}
-
-function Error() {
-    return (
-        <div>
-            <h1>Error...</h1>
-        </div>
-    )
-}
+import Loading from './../components/Loading';
+import Error from './../components/Error';
+import Empty from './../components/Empty';
 
 class Home extends React.Component {
 
@@ -153,8 +132,15 @@ class Home extends React.Component {
     componentWillUnmount() {
         console.log("UNMOUNTING: componentWillUnmount");
         // called when the component is about to be removed from the DOM
+        // eg removing event listeners, cancel the timer 
         alert("The component named Home is about to be unmounted.");
     }
+
+     /*** Deprecated lifecycle methods after react 16.3
+        componentWillMount
+        componentWillReceiveProps
+        componentWillUpdate
+     ***/
 
     render() {
         const { tweets, loading, error } = this.state;
