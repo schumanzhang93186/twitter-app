@@ -5,13 +5,19 @@ import Search from '../Search/Search';
 // that uses es6 class syntax
 class TweetsList extends React.Component {
 
+    goToProfilePage = () => {
+        const { history } = this.props;
+        history.push('/profile');
+    };
+
     render() {
         const { children } = this.props;
         const { searchPlaceholder } = this.props;
         const { onSubmitSearch } = this.props;
 
         return (
-            <>
+            <>  
+                <button onClick={this.goToProfilePage} className="btn btn-primary">Go to profile</button>
                 <Search placeholder={searchPlaceholder} onSubmitSearch={onSubmitSearch}/>
                 { children }
             </>
