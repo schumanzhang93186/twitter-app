@@ -40,7 +40,7 @@ export default function SignUp() {
 
         // equivalent of componentWillUnmount
         return () => {
-            alert('SignUp component will unmount');
+            // alert('SignUp component will unmount');
         }
     }, []);
 

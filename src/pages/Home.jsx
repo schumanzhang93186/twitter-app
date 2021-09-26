@@ -133,7 +133,6 @@ class Home extends React.Component {
         console.log("UNMOUNTING: componentWillUnmount");
         // called when the component is about to be removed from the DOM
         // eg removing event listeners, cancel the timer 
-        alert("The component named Home is about to be unmounted.");
     }
 
      /*** Deprecated lifecycle methods after react 16.3
