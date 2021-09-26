@@ -321,7 +321,8 @@
     }
   ],
   "profile": {
-    "name": "Schuman"
+    "name": "Schuman",
+    "image": "https://thispersondoesnotexist.com/image"
   },
   "users": []
 }

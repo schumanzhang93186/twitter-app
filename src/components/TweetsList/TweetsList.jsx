@@ -1,33 +1,22 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import Search from '../Search/Search';
 
 // this is an example of a class component
 // that uses es6 class syntax
-class TweetsList extends React.Component {
 
-    goToProfilePage = () => {
-        const { history } = this.props;
+export default function TweetsList({ children, searchPlaceholder="Search popular tweets", onSubmitSearch}) {
+    const history = useHistory();
+
+    const goToProfilePage = () => {
         history.push('/profile');
     };
 
-    render() {
-        const { children } = this.props;
-        const { searchPlaceholder } = this.props;
-        const { onSubmitSearch } = this.props;
-
-        return (
-            <>  
-                <button onClick={this.goToProfilePage} className="btn btn-primary">Go to profile</button>
-                <Search placeholder={searchPlaceholder} onSubmitSearch={onSubmitSearch}/>
-                { children }
-            </>
-        );
-    }
+    return (
+        <>  
+            <button onClick={goToProfilePage} className="btn btn-primary">Go to profile</button>
+            <Search placeholder={searchPlaceholder} onSubmitSearch={onSubmitSearch}/>
+            { children }
+        </>
+    )
 }
-
-// you can use default props, in case no props passed in to this component
-TweetsList.defaultProps = {
-    searchPlaceholder: "Search popular tweets",
-};
-
-export default TweetsList;

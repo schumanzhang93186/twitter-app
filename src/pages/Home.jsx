@@ -1,5 +1,6 @@
-import React from 'react';
-import { withRouter } from "react-router-dom";
+import React, { useEffect, useState, useContext } from 'react';
+
+import { GlobalContext } from '../context/GlobalState';
 
 import TweetsList from './../components/TweetsList/TweetsList';
 import Tweet from './../components/Tweet/Tweet';
@@ -9,177 +10,64 @@ import Loading from './../components/Loading';
 import Error from './../components/Error';
 import Empty from './../components/Empty';
 
-class Home extends React.Component {
+export default function Home() {
+    const { globalState, findMatchingTweet, onSortingOptionChanged, addTweets } = useContext(GlobalContext);
+    const { tweets } = globalState;
 
-    incrementLikes = (id) => {
-        this.setState(prevState => ({
-            tweets: prevState.tweets.map((tweet) => (tweet.id === id) ? {
-                ...tweet,
-                likes: (!tweet.liked) ? tweet.likes + 1 : tweet.likes - 1,
-                liked: !tweet.liked,
-            } : tweet)
-        }));
-    };
+    const [ currentStatus, setCurrenStatus ] = useState({
+        loading: false,
+        error: false,
+    });
 
-    incrementRetweets = (id) => {
-        this.setState(prevState => ({
-            tweets: prevState.tweets.map((tweet) => (tweet.id === id) ? {
-                ...tweet,
-                retweets: tweet.retweets + 1,
-            } : tweet)
-        }));
-    };
+    useEffect(() => {
+        setCurrenStatus({ loading: true });
 
-    findMatchingTweet = (searchText) => {
-        this.setState(prevState => ({
-            tweets: prevState.tweets.filter((tweet) => tweet.tweet.includes(searchText)),
-        }));
-    };
-
-    onSortingOptionChanged = (option) => {
-        this.setState(prevState => ({
-            tweets: prevState.tweets.sort((a, b) => (option === "likeChecked") ? b.likes - a.likes : b.retweets - a.retweets),
-        }))
-    };
-
-    // react lifecyle methods
-
-    /*** Mounting a component
-     constructor()
-     getDerivedStateFromProps()
-     render()
-     componentDidMount()
-     ***/
-
-    constructor(props) {
-        console.log("MOUNTING: constructor called");
-        super(props);
-
-        // set up initial state
-        this.state = {
-            tweets: [],
-            loading: false,
-            error: false,
-        };
-    }
-
-    static getDerivedStateFromProps(props, state) {
-        // called right before rendering the element(s)
-        // This is the natural place to set the state object based on the initial props
-        // eg. return {favoritecolor: props.favcol };
-        console.log("MOUNTING: getDerivedStateFromProps called");
-        return state;
-    }
-
-    componentDidMount() {
-        // make initial API call here
-        // run statements that requires that the component is already placed in the DOM
-        console.log("MOUNTING: componentDidMount called");
-
-        this.setState({ loading: true });
-
-        fetch('http://localhost:3001/tweets')
-            .then(res => res.json())
+        fetch('http://localhost:3002/tweets')
+            .then(res => {
+                return res.json();
+            })
             .then((data) => {
                 console.log('success data: ', data);
-                this.setState({ tweets: data, loading: false, error: false });
+                setCurrenStatus({ loading: false, error: false });
+                addTweets(data);
             })
             .catch((error) => {
                 console.error(error);
-                this.setState({ loading: false, error: true });
+                setCurrenStatus({ loading: false, error: true });
             });
-    }
+    }, []);
 
+    return (
+        <div className="App">
+            <header className="App-header">
+                <div className="row">
+                    {currentStatus.loading && !currentStatus.error && <Loading />}
+                    {!currentStatus.loading && currentStatus.error && <Error />}
+                    {!currentStatus.loading && !currentStatus.error &&
+                        <>
+                            <div className="col-md-4">
+                            </div>
+                            <div className="col-md-4">
+                                <TweetsList onSubmitSearch={findMatchingTweet}>
+                                    {
+                                        (tweets.length > 0) ?
+                                            tweets.map((tweet, index) => {
+                                                return <Tweet
+                                                    index={index}
+                                                    key={index} />
+                                            }) : <Empty />
+                                    }
+                                </TweetsList>
+                            </div>
+                            <div className="col-md-3">
+                                <Sort onOptionChange={onSortingOptionChanged} />
+                            </div>
+                        </>
+                    }
+                </div>
 
-    /*** Updating a component, when state/props changes
-     getDerivedStateFromProps()
-     shouldComponentUpdate()
-     render()
-     getSnapshotBeforeUpdate()
-     componentDidUpdate()
-     ***/
+            </header>
+        </div>
 
-    shouldComponentUpdate() {
-        console.log("UPDATING: shouldComponentUpdate");
-        // return a Boolean value that specifies whether React should continue with the rendering or not
-        return true;
-    }
-
-    getSnapshotBeforeUpdate(prevProps, prevState) {
-        console.log("UPDATING: getSnapshotBeforeUpdate", prevProps, prevState);
-        return null;
-    }
-
-    componentDidUpdate() {
-        console.log("UPDATING: componentDidUpdate");
-        // triggered after state updates
-        // eg logic for a saving function if state has updated
-        fetch('http://localhost:3001/snapshots', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(this.state),
-        }).then(res => res.json())
-          .then(res => console.log(res), err => console.error(err));
-    }
-
-    /*** Component Unmounting
-    componentWillUnmount()
-     ***/
-
-    componentWillUnmount() {
-        console.log("UNMOUNTING: componentWillUnmount");
-        // called when the component is about to be removed from the DOM
-        // eg removing event listeners, cancel the timer 
-    }
-
-     /*** Deprecated lifecycle methods after react 16.3
-        componentWillMount
-        componentWillReceiveProps
-        componentWillUpdate
-     ***/
-
-    render() {
-        const { tweets, loading, error } = this.state;
-        console.log("RENDER called: ", this.props);
-
-        return (
-            <div className="App">
-                <header className="App-header">
-                    <div className="row">
-                        {loading && !error && <Loading />}
-                        {!loading && error && <Error />}
-                        {!loading && !error &&
-                            <>
-                                <div className="col-md-4">
-                                </div>
-                                <div className="col-md-4">
-                                    <TweetsList {...this.props} onSubmitSearch={this.findMatchingTweet}>
-                                        {
-                                            (tweets.length > 0) ?
-                                                tweets.map((tweet) => {
-                                                    return <Tweet
-                                                        data={tweet}
-                                                        onIncrementLikes={this.incrementLikes}
-                                                        onIncrementRetweets={this.incrementRetweets}
-                                                        key={tweet.id} />
-                                                }) : <Empty />
-                                        }
-                                    </TweetsList>
-                                </div>
-                                <div className="col-md-3">
-                                    <Sort onOptionChange={this.onSortingOptionChanged} />
-                                </div>
-                            </>
-                        }
-                    </div>
-
-                </header>
-            </div>
-        );
-    }
+    )
 }
-
-export default withRouter(Home);

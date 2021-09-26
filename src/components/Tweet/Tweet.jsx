@@ -1,13 +1,13 @@
 import styles from './Tweet.module.css';
+import { GlobalContext } from './../../context/GlobalState';
 
 import heartIcon from './../../assets/heart.png';
+import { useContext } from 'react';
 
-// converted to a functional component
+function Tweet({ index }) {
 
-// this is what is known as a presentation component
-// props get passed down, thats it
-// functions to update back in the container/parent
-function Tweet({ data, onIncrementLikes, onIncrementRetweets }) {
+    const { globalState, incrementLikes, incrementRetweets } = useContext(GlobalContext);
+    const { tweets } = globalState;
 
     const {
         id,
@@ -20,14 +20,14 @@ function Tweet({ data, onIncrementLikes, onIncrementRetweets }) {
         likes,
         liked,
         retweets,
-    } = data;
+    } = tweets[index];
 
-    const likeClicked = (event) => {
-        onIncrementLikes(id);
+    const likeClicked = () => {
+        incrementLikes(id);
     };
 
-    const retweetClicked = (event) => {
-        onIncrementRetweets(id);
+    const retweetClicked = () => {
+        incrementRetweets(id);
     };
 
     return (

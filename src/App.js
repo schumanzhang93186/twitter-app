@@ -5,8 +5,9 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import SignUp from './pages/SignUp';
 
+import { GlobalProvider } from './context/GlobalState';
+
 import {
-    BrowserRouter as Router,
     Switch,
     Route,
 } from "react-router-dom";
@@ -14,7 +15,7 @@ import {
 class App extends React.Component {
     render() {
         return (
-            <Router>
+            <GlobalProvider>
                 <Switch>
                     <Route path="/profile">
                         <Profile />
@@ -26,8 +27,7 @@ class App extends React.Component {
                         <Home/>
                     </Route>
                 </Switch>
-
-            </Router>
+            </GlobalProvider>
         );
     }
 }
