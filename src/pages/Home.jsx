@@ -11,7 +11,7 @@ import Error from './../components/Error';
 import Empty from './../components/Empty';
 
 export default function Home() {
-    const { globalState, findMatchingTweet, onSortingOptionChanged, addTweets } = useContext(GlobalContext);
+    const { globalState, findMatchingTweet, onSortingOptionChanged, refreshTweets } = useContext(GlobalContext);
     const { tweets } = globalState;
 
     const [ currentStatus, setCurrenStatus ] = useState({
@@ -29,7 +29,7 @@ export default function Home() {
             .then((data) => {
                 console.log('success data: ', data);
                 setCurrenStatus({ loading: false, error: false });
-                addTweets(data);
+                refreshTweets(data);
             })
             .catch((error) => {
                 console.error(error);

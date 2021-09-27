@@ -13,11 +13,11 @@ export const GlobalContext = createContext(initialState);
 // action and action.type, action.payload
 function appReducer(state, action) {
     switch(action.type) {
-        case "ADD_TWEETS":
-            console.log("ADD_TWEETS");
+        case "REFRESH_TWEETS":
+            console.log("REFRESH_TWEETS");
             return {
                 ...state,
-                tweets: state.tweets.concat(action.payload),
+                tweets: action.payload,
             }
         case "INCREMENT_LIKES":
             console.log("INCREMENT_LIKES");
@@ -50,7 +50,12 @@ function appReducer(state, action) {
                 ...state,
                 tweets: state.tweets.sort((a, b) => (action.payload === "likeChecked") ? b.likes - a.likes : b.retweets - a.retweets),
             }
-        
+        case "REFRESH_PROFILE":
+            console.log("REFRESH_PROFILE");
+            return {
+                ...state,
+                profile: action.payload,
+            }
         case "ADD_USER":
             return {
                 ...state,
@@ -103,15 +108,23 @@ export const GlobalProvider = ({ children }) => {
         });
     };
 
-    const addTweets = (tweets) => {
+    const refreshTweets = (tweets) => {
         dispatch({
-            type: "ADD_TWEETS",
+            type: "REFRESH_TWEETS",
             payload: tweets,
         });
-
     };
 
-    const value = { globalState: state, addTweets, incrementLikes, incrementRetweets, findMatchingTweet, onSortingOptionChanged };
+    const refreshProfile = (profile) => {
+        dispatch({
+            type: "REFRESH_PROFILE",
+            payload: profile,
+        });
+    };
+
+    const value = { globalState: state, 
+            refreshTweets, incrementLikes, incrementRetweets, refreshProfile,
+            findMatchingTweet, onSortingOptionChanged };
 
     // this is how we add methods and properties to the GlobalContext
     return (
